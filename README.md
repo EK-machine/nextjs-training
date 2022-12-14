@@ -1,0 +1,1 @@
+# Training Nextjs project
