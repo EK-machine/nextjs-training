@@ -1,7 +1,7 @@
 import { useEffect, useState, KeyboardEvent } from "react";
 import styles from "./styles.module.css";
 import { RatingProps } from "../../types/types";
-import StarIcon from "../../public/svgs/Star.svg";
+import StarIcon from "../../public/svgs/star.svg";
 import cn from "classnames";
 
 const Rating: React.FC<RatingProps> = ({

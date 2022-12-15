@@ -1,7 +1,7 @@
 import { ButtonProps } from "../../types/types";
 import styles from "./styles.module.css";
 import cn from "classnames";
-import ArrowIcon from "../../public/svgs/Arrow.svg";
+import ArrowIcon from "../../public/svgs/arrow.svg";
 
 const Button: React.FC<ButtonProps> = ({
   appearance,
