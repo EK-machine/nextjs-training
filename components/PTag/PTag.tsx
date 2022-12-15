@@ -1,5 +1,5 @@
 import { PTagProps } from "../../types/types";
-import style from "./PTag.module.css";
+import styles from "./styles.module.css";
 import cn from "classnames";
 
 const PTag: React.FC<PTagProps> = ({
@@ -10,10 +10,10 @@ const PTag: React.FC<PTagProps> = ({
   return (
     <p
       className={cn({
-        [style.p]: true,
-        [style.b]: size === "b",
-        [style.m]: size === "m",
-        [style.s]: size === "s",
+        [styles.p]: true,
+        [styles.b]: size === "b",
+        [styles.m]: size === "m",
+        [styles.s]: size === "s",
       })}
       {...props}
     >

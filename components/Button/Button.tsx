@@ -1,5 +1,5 @@
 import { ButtonProps } from "../../types/types";
-import style from "./Button.module.css";
+import styles from "./styles.module.css";
 import cn from "classnames";
 import ArrowIcon from "../../public/svgs/Arrow.svg";
 
@@ -14,16 +14,16 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={props.onClick}
       className={cn(className, {
-        [style.button]: true,
-        [style.primary]: appearance === "primary",
-        [style.ghost]: appearance === "ghost",
+        [styles.button]: true,
+        [styles.primary]: appearance === "primary",
+        [styles.ghost]: appearance === "ghost",
       })}
     >
       {children}
       {arrow !== "none" && (
         <span
-          className={cn(style.arrow, {
-            [style.down]: arrow === "down",
+          className={cn(styles.arrow, {
+            [styles.down]: arrow === "down",
           })}
         >
           <ArrowIcon />
