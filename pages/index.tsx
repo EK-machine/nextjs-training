@@ -3,8 +3,10 @@ import Button from "../components/Button/Button";
 import PTag from "../components/PTag/PTag";
 import Tag from "../components/Tag/Tag";
 import Rating from "../components/Rating/Rating";
+import { withLayout } from "../components/Layout/Layout";
+// import Layout from "../components/Layout/Layout";
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   return (
     <>
       <HTag tag="h1">Hi there</HTag>
@@ -36,3 +38,5 @@ export default function Home(): JSX.Element {
     </>
   );
 }
+
+export default withLayout(Home);

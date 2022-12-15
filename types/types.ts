@@ -43,3 +43,16 @@ export interface RatingProps
   rating: number;
   setRating?: (rating: number) => void;
 }
+
+export interface LayoutProps {
+  children: ReactNode;
+}
+
+export interface SidebarProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+
+export interface HeaderProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+
+export interface FooterProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}

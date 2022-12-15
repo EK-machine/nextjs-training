@@ -1,0 +1,23 @@
+.wrapper {
+  padding: 25px 30px;
+  background-color: var(--primary);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  color: var(--white);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.wrapper a:hover {
+  color: var(--grey-light);
+}
+
+@media (min-width: 765px) {
+  .wrapper {
+    height: 72px;
+    padding: 25px 30px;
+    grid-template-columns: 1fr auto auto;
+    gap: 40px;
+  }
+}
