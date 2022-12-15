@@ -2,6 +2,7 @@ import HTag from "../components/HTag/HTag";
 import Button from "../components/Button/Button";
 import PTag from "../components/PTag/PTag";
 import Tag from "../components/Tag/Tag";
+import Rating from "../components/Rating/Rating";
 
 export default function Home(): JSX.Element {
   return (
@@ -31,6 +32,7 @@ export default function Home(): JSX.Element {
       <Tag color="red" size="m">
         Hello
       </Tag>
+      <Rating rating={3} isEditable />
     </>
   );
 }

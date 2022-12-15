@@ -36,3 +36,10 @@ export interface TagProps
   color: "ghost" | "red" | "grey" | "green" | "primary";
   href?: string;
 }
+
+export interface RatingProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  isEditable?: boolean;
+  rating: number;
+  setRating?: (rating: number) => void;
+}
