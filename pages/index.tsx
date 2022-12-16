@@ -4,9 +4,11 @@ import PTag from "../components/PTag/PTag";
 import Tag from "../components/Tag/Tag";
 import Rating from "../components/Rating/Rating";
 import { withLayout } from "../components/Layout/Layout";
-// import Layout from "../components/Layout/Layout";
+import axios from "axios";
+import { GetStaticProps } from "next/types";
+import { HomeProps, MenuItem } from "../types/types";
 
-function Home(): JSX.Element {
+function Home({ menu }: HomeProps): JSX.Element {
   return (
     <>
       <HTag tag="h1">Hi there</HTag>
@@ -35,8 +37,31 @@ function Home(): JSX.Element {
         Hello
       </Tag>
       <Rating rating={3} isEditable />
+      {
+        <ul>
+          {menu.map((e) => (
+            <li key={e._id.secondCategory}>{e._id.secondCategory}</li>
+          ))}
+        </ul>
+      }
     </>
   );
 }
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>(
+    process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
+    {
+      firstCategory,
+    }
+  );
+  return {
+    props: {
+      menu,
+      firstCategory,
+    },
+  };
+};
