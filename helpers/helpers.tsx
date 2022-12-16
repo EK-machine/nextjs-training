@@ -30,3 +30,9 @@ export const FirstLevelMenu: FirstLevelMenuItem[] = [
     id: TopCategory.Propducts,
   },
 ];
+
+export const convertSalary = (s: number) =>
+  s
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+    .concat("₽");

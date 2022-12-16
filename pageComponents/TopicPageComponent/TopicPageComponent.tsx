@@ -13,7 +13,7 @@ const TopicPageComponent: React.FC<TopicPageComponentProps> = ({
   ...props
 }): JSX.Element => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} {...props}>
       <div className={styles.title}>
         <HTag tag="h1">{page.title}</HTag>
         {products && (
