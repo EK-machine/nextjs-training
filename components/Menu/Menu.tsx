@@ -82,6 +82,7 @@ const Menu: React.FC = (): JSX.Element => {
     return pages.map((p) => (
       <Link
         href={`/${route}/${p.alias}`}
+        key={p.alias}
         className={cn({
           [styles.tLevel]: true,
           [styles.tLevelActive]: `/${route}/${p.alias}` === router.asPath,

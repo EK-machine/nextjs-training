@@ -73,6 +73,8 @@ export interface HomeProps extends Record<string, unknown> {
   firstCategory: number;
 }
 
+export interface TypeProps extends HomeProps {}
+
 export enum TopCategory {
   Courses,
   Services,
@@ -150,9 +152,11 @@ export interface ProductModel {
   advantages: string;
 }
 
-export interface CourseProps extends HomeProps {
+export interface CourseProps extends Record<string, unknown> {
   page: PageModel;
   products: ProductModel[];
+  menu: MenuItem[];
+  firstCategory: TopCategory;
 }
 
 export interface IAppContext {
