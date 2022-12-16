@@ -68,13 +68,6 @@ export interface PageItem {
   category: string;
 }
 
-export interface MenuItem {
-  _id: {
-    secondCategory: string;
-  };
-  pages: PageItem[];
-}
-
 export interface HomeProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: number;
@@ -160,4 +153,25 @@ export interface ProductModel {
 export interface CourseProps extends HomeProps {
   page: PageModel;
   products: ProductModel[];
+}
+
+export interface IAppContext {
+  menu: MenuItem[];
+  firstCategory: TopCategory;
+  setMenu?: (newMenu: MenuItem[]) => void;
+}
+
+export interface MenuItem {
+  _id: {
+    secondCategory: string;
+  };
+  isOpened?: boolean;
+  pages: PageItem[];
+}
+
+export interface FirstLevelMenuItem {
+  route: string;
+  name: string;
+  icon: JSX.Element;
+  id: TopCategory;
 }

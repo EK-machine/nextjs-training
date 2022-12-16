@@ -1,0 +1,67 @@
+.menu {
+}
+
+.fLevel {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  align-items: center;
+  font-size: 18px;
+  line-height: 25px;
+  margin-top: 20px;
+}
+
+.fLevelActive,
+.fLevel:hover {
+  color: var(--primary);
+}
+
+.fLevelActive svg,
+.fLevel:hover svg {
+  fill: var(--primary);
+}
+
+.sLevelWrapper {
+  margin-top: 15px;
+  margin-left: 12px;
+  padding-left: 32px;
+  border-left: 1px solid #dfdfdf;
+}
+
+.secondLevel {
+  margin-bottom: 10px;
+  display: grid;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--grey-dark);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.sLevel {
+  display: none;
+}
+
+.sLevelActive {
+  display: block;
+}
+
+.sLevelActive:last-child {
+  margin-bottom: 20px;
+}
+
+.tLevel {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: var(--grey-dark);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.tLevelActive,
+.tLevel:hover {
+  color: var(--primary);
+}
