@@ -6,19 +6,31 @@ import {
 import { withLayout } from "../../components/Layout/Layout";
 import axios from "axios";
 import {
-  CourseProps,
+  TopicPageProps,
   MenuItem,
   PageModel,
   ProductModel,
 } from "../../types/types";
 import { ParsedUrlQuery } from "querystring";
 import { FirstLevelMenu } from "../../helpers/helpers";
+import TopicPageComponent from "../../pageComponents/TopicPageComponent/TopicPageComponent";
 
-function Course({ menu, page, products }: CourseProps): JSX.Element {
-  return <>{products && products.length}</>;
+function TopicPage({
+  menu,
+  page,
+  products,
+  firstCategory,
+}: TopicPageProps): JSX.Element {
+  return (
+    <TopicPageComponent
+      page={page}
+      products={products}
+      firstCategory={firstCategory}
+    />
+  );
 }
 
-export default withLayout(Course);
+export default withLayout(TopicPage);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
@@ -40,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<CourseProps> = async ({
+export const getStaticProps: GetStaticProps<TopicPageProps> = async ({
   params,
 }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {

@@ -152,7 +152,7 @@ export interface ProductModel {
   advantages: string;
 }
 
-export interface CourseProps extends Record<string, unknown> {
+export interface TopicPageProps extends Record<string, unknown> {
   page: PageModel;
   products: ProductModel[];
   menu: MenuItem[];
@@ -179,3 +179,18 @@ export interface FirstLevelMenuItem {
   icon: JSX.Element;
   id: TopCategory;
 }
+
+export interface TopicPageComponentProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  page: PageModel;
+  products: ProductModel[];
+  firstCategory: TopCategory;
+}
+
+export interface CardProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  color?: "white" | "blue";
+  children: ReactNode;
+}
+
+export interface HhDataProps extends HhData {}
