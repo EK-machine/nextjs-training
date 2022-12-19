@@ -12,13 +12,13 @@ const Tag: React.FC<TagProps> = ({
 }): JSX.Element => {
   return (
     <div
-      className={cn({
+      className={cn(className, {
         [style.tag]: true,
         [style.m]: size === "m",
         [style.s]: size === "s",
         [style.ghost]: color === "ghost",
         [style.red]: color === "red",
-        [style.grey]: color === "grey",
+        [style.gray]: color === "gray",
         [style.green]: color === "green",
         [style.primary]: color === "primary",
       })}

@@ -7,6 +7,8 @@ import { withLayout } from "../components/Layout/Layout";
 import axios from "axios";
 import { GetStaticProps } from "next/types";
 import { HomeProps, MenuItem } from "../types/types";
+import Input from "../components/Input/Input";
+import TextArea from "../components/TextArea/Input";
 
 function Home({ menu }: HomeProps): JSX.Element {
   return (
@@ -27,7 +29,7 @@ function Home({ menu }: HomeProps): JSX.Element {
       <Tag color="green" size="s">
         Hello
       </Tag>
-      <Tag color="grey" size="m">
+      <Tag color="gray" size="m">
         Hello
       </Tag>
       <Tag color="primary" size="s">
@@ -37,6 +39,8 @@ function Home({ menu }: HomeProps): JSX.Element {
         Hello
       </Tag>
       <Rating rating={3} isEditable />
+      <Input />
+      <TextArea />
     </>
   );
 }

@@ -29,8 +29,9 @@ a {
 
 :root {
   --black: #3b434e;
-  --grey-light: #ebebeb;
-  --grey-dark: #787d85;
+  --gray-light: #ebebeb;
+  --gray: #a4a4a4;
+  --gray-dark: #787d85;
   --white: white;
   --primary: #7653fc;
   --primary-hover: #5f38ff;

@@ -2,7 +2,9 @@ import React, {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   HTMLAttributes,
+  InputHTMLAttributes,
   ReactNode,
+  TextareaHTMLAttributes,
 } from "react";
 
 export interface HTagProps {
@@ -33,7 +35,7 @@ export interface TagProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   size: "m" | "s";
   children: ReactNode;
-  color: "ghost" | "red" | "grey" | "green" | "primary";
+  color: "ghost" | "red" | "gray" | "green" | "primary";
   href?: string;
 }
 
@@ -98,22 +100,22 @@ export interface HhData {
 }
 
 export interface PageModel {
-  tafs: string[];
+  tags: string[];
   _id: string;
   secondCategory: string;
   alias: string;
   title: string;
   category: string;
-  seoText: string;
+  seoText?: string;
   tagsTitle: string;
   metaTitle: string;
   metaDescription: string;
   firstCategory: TopCategory;
-  advanrage: PageAdvantage[];
+  advantages?: PageAdvantage[];
   createdAt: Date;
   updatedAt: Date;
   __v: number;
-  hh: HhData;
+  hh?: HhData;
 }
 
 export interface ProductCharacteristic {
@@ -140,6 +142,7 @@ export interface ProductModel {
   credit: number;
   oldPrice: number;
   description: string;
+  disadvantages?: string;
   characteristics: ProductCharacteristic[];
   createdAt: Date;
   updatedAt: Date;
@@ -149,7 +152,7 @@ export interface ProductModel {
   reviews: ReviewModel[];
   reviewCount: number;
   reviewAvg?: number;
-  advantages: string;
+  advantages?: string;
 }
 
 export interface TopicPageProps extends Record<string, unknown> {
@@ -194,3 +197,58 @@ export interface CardProps
 }
 
 export interface HhDataProps extends HhData {}
+
+export interface AdvantagesProps {
+  advantages: PageAdvantage[];
+}
+
+export interface SortProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  sort: SortEnum;
+  setSort: (sort: SortEnum) => void;
+}
+
+export enum SortEnum {
+  Rating,
+  Price,
+}
+
+export type SortActions = { type: SortEnum.Price } | { type: SortEnum.Rating };
+
+export interface SortReucerState {
+  sort: SortEnum;
+  products: ProductModel[];
+}
+
+export interface InputProps
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {}
+
+export interface TextAreaProps
+  extends DetailedHTMLProps<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  > {}
+
+export interface SearchProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+
+export interface ProductProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  product: ProductModel;
+}
+
+export interface DividerProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLHRElement>, HTMLHRElement> {}
+
+export interface ReviewProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  review: ReviewModel;
+}
+
+export interface FormProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
+  productId: string;
+}

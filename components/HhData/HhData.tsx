@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import cn from "classnames";
 import Card from "../Card/Card";
 import RoundStarIcon from "../../public/svgs/roundStar.svg";
-import { convertSalary } from "../../helpers/helpers";
+import { convertToRur } from "../../helpers/helpers";
 
 const HhData: React.FC<HhDataProps> = ({
   count,
@@ -21,9 +21,7 @@ const HhData: React.FC<HhDataProps> = ({
       <Card className={styles.salary}>
         <div>
           <div className={styles.title}>Начальный</div>
-          <div className={styles.salaryValue}>
-            {convertSalary(juniorSalary)}
-          </div>
+          <div className={styles.salaryValue}>{convertToRur(juniorSalary)}</div>
           <div className={styles.rate}>
             <RoundStarIcon className={styles.filled} />
             <RoundStarIcon className={styles.filled} />
@@ -32,9 +30,7 @@ const HhData: React.FC<HhDataProps> = ({
         </div>
         <div>
           <div className={styles.title}>Средьний</div>
-          <div className={styles.salaryValue}>
-            {convertSalary(middleSalary)}
-          </div>
+          <div className={styles.salaryValue}>{convertToRur(middleSalary)}</div>
           <div className={styles.rate}>
             <RoundStarIcon className={styles.filled} />
             <RoundStarIcon />
@@ -43,9 +39,7 @@ const HhData: React.FC<HhDataProps> = ({
         </div>
         <div>
           <div className={styles.title}>Профессионал</div>
-          <div className={styles.salaryValue}>
-            {convertSalary(seniorSalary)}
-          </div>
+          <div className={styles.salaryValue}>{convertToRur(seniorSalary)}</div>
           <div className={styles.rate}>
             <RoundStarIcon className={styles.filled} />
             <RoundStarIcon className={styles.filled} />
