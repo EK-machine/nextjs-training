@@ -10,11 +10,13 @@ import { FieldError } from "react-hook-form";
 import up from "../public/svgs/up.svg";
 import menu from "../public/svgs/lines.svg";
 import close from "../public/svgs/cross.svg";
+import search from "../public/svgs/search.svg";
 
 export const icons = {
   up,
   menu,
   close,
+  search,
 };
 
 export type IconName = keyof typeof icons;

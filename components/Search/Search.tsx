@@ -1,12 +1,11 @@
 import { SearchProps } from "../../types/types";
 import styles from "./styles.module.css";
-import SearchIcon from "../../public/svgs/search.svg";
 import Input from "../Input/Input";
 import cn from "classnames";
 import { useState } from "react";
-import Button from "../Button/Button";
 import { useRouter } from "next/router";
 import { KeyboardEvent } from "react";
+import ButtonIcon from "../ButtonIcon/ButtonIcon";
 
 const Search: React.FC<SearchProps> = ({
   className,
@@ -40,14 +39,12 @@ const Search: React.FC<SearchProps> = ({
         className={styles.searchInput}
         onKeyDown={handleKeyDown}
       />
-      <Button
-        appearance="primary"
-        type="button"
-        className={styles.button}
+      <ButtonIcon
         onClick={startSearch}
-      >
-        <SearchIcon />
-      </Button>
+        className={styles.button}
+        appearance="primary"
+        icon="search"
+      />
     </div>
   );
 };
