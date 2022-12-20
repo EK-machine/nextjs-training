@@ -14,6 +14,7 @@ import {
 import { ParsedUrlQuery } from "querystring";
 import { FirstLevelMenu } from "../../helpers/helpers";
 import TopicPageComponent from "../../pageComponents/TopicPageComponent/TopicPageComponent";
+import { API } from "../../helpers/api";
 
 function TopicPage({
   menu,
@@ -35,12 +36,9 @@ export default withLayout(TopicPage);
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
   for (const m of FirstLevelMenu) {
-    const { data: menu } = await axios.post<MenuItem[]>(
-      process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-      {
-        firstCategory: m.id,
-      }
-    );
+    const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+      firstCategory: m.id,
+    });
     paths = paths.concat(
       menu.flatMap((e) => e.pages.map((page) => `/${m.route}/${page.alias}`))
     );
@@ -69,12 +67,9 @@ export const getStaticProps: GetStaticProps<TopicPageProps> = async ({
     };
   }
   try {
-    const { data: menu } = await axios.post<MenuItem[]>(
-      process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-      {
-        firstCategory: firstCategoryItem.id,
-      }
-    );
+    const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+      firstCategory: firstCategoryItem.id,
+    });
 
     if (menu.length === 0) {
       return {
@@ -83,11 +78,11 @@ export const getStaticProps: GetStaticProps<TopicPageProps> = async ({
     }
 
     const { data: page } = await axios.get<PageModel>(
-      process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/byAlias/" + params.alias
+      API.topPage.byAlias + params.alias
     );
 
     const { data: products } = await axios.post<ProductModel[]>(
-      process.env.NEXT_PUBLIC_DOMAIN + "/api/product/find",
+      API.product.find,
       {
         category: page.category,
         limit: 10,

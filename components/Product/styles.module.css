@@ -179,6 +179,10 @@
   line-height: 19px;
 }
 
+.rateTitle a {
+  color: var(--primary);
+}
+
 .gTag {
   margin-left: 5px;
 }

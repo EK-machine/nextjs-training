@@ -6,6 +6,7 @@ import React, {
   ReactNode,
   TextareaHTMLAttributes,
 } from "react";
+import { FieldError } from "react-hook-form";
 
 export interface HTagProps {
   tag: "h1" | "h2" | "h3";
@@ -42,8 +43,9 @@ export interface TagProps
 export interface RatingProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   isEditable?: boolean;
-  rating: number;
+  rating: number | null;
   setRating?: (rating: number) => void;
+  error?: FieldError;
 }
 
 export interface LayoutProps {
@@ -213,7 +215,10 @@ export enum SortEnum {
   Price,
 }
 
-export type SortActions = { type: SortEnum.Price } | { type: SortEnum.Rating };
+export type SortActions =
+  | { type: SortEnum.Price }
+  | { type: SortEnum.Rating }
+  | { type: "reset"; initialState: ProductModel[] };
 
 export interface SortReucerState {
   sort: SortEnum;
@@ -224,13 +229,17 @@ export interface InputProps
   extends DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  error?: FieldError;
+}
 
 export interface TextAreaProps
   extends DetailedHTMLProps<
     TextareaHTMLAttributes<HTMLTextAreaElement>,
     HTMLTextAreaElement
-  > {}
+  > {
+  error?: FieldError;
+}
 
 export interface SearchProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
@@ -251,4 +260,15 @@ export interface ReviewProps
 export interface FormProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   productId: string;
+}
+
+export interface FormInterface {
+  name: string;
+  title: string;
+  description: string;
+  rating: number | null;
+}
+
+export interface ReviewSendResp {
+  message: string;
 }

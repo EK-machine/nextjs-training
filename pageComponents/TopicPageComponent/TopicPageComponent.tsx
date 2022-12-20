@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { sortReducer } from "./sort.reducer";
 import {
   SortEnum,
@@ -30,6 +30,11 @@ const TopicPageComponent: React.FC<TopicPageComponentProps> = ({
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort });
   };
+
+  useEffect(() => {
+    dispatchSort({ type: "reset", initialState: products });
+  }, [products]);
+
   return (
     <div className={styles.wrapper} {...props}>
       <div className={styles.title}>

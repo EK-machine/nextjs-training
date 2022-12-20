@@ -9,6 +9,7 @@ import { GetStaticProps } from "next/types";
 import { HomeProps, MenuItem } from "../types/types";
 import Input from "../components/Input/Input";
 import TextArea from "../components/TextArea/Input";
+import { API } from "../helpers/api";
 
 function Home({ menu }: HomeProps): JSX.Element {
   return (
@@ -49,12 +50,9 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0;
-  const { data: menu } = await axios.post<MenuItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-    {
-      firstCategory,
-    }
-  );
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory,
+  });
   return {
     props: {
       menu,

@@ -29,12 +29,21 @@
   gap: 20px;
 }
 
-.success {
+.success,
+.error {
   margin-top: 20px;
   background-color: var(--green-light);
   padding: 20px;
   position: relative;
   border-radius: 5px;
+}
+
+.success {
+  background-color: var(--green-light);
+}
+
+.error {
+  background-color: var(--red);
 }
 
 .close {
@@ -43,8 +52,16 @@
   cursor: pointer;
 }
 
+.error .close path {
+  stroke: var(--black);
+}
+
 .successTitle {
   font-weight: bold;
+}
+
+.isError {
+  color: var(--black);
 }
 
 @media screen and (min-width: 640px) {

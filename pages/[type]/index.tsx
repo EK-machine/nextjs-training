@@ -8,6 +8,7 @@ import { withLayout } from "../../components/Layout/Layout";
 import { HomeProps, MenuItem, TypeProps } from "../../types/types";
 import { FirstLevelMenu } from "../../helpers/helpers";
 import { ParsedUrlQuery } from "querystring";
+import { API } from "../../helpers/api";
 
 const Type: React.FC<TypeProps> = ({ firstCategory }): JSX.Element => {
   return <div>Type: {firstCategory}</div>;
@@ -36,12 +37,9 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({
       notFound: true,
     };
   }
-  const { data: menu } = await axios.post<MenuItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find",
-    {
-      firstCategory: firstCategoryItem.id,
-    }
-  );
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory: firstCategoryItem.id,
+  });
   return {
     props: {
       menu,
