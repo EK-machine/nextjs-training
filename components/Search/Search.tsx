@@ -6,6 +6,7 @@ import cn from "classnames";
 import { useState } from "react";
 import Button from "../Button/Button";
 import { useRouter } from "next/router";
+import { KeyboardEvent } from "react";
 
 const Search: React.FC<SearchProps> = ({
   className,
@@ -24,7 +25,7 @@ const Search: React.FC<SearchProps> = ({
     });
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       startSearch();
     }

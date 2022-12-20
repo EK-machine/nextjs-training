@@ -2,6 +2,7 @@ import { ButtonProps } from "../../types/types";
 import styles from "./styles.module.css";
 import cn from "classnames";
 import ArrowIcon from "../../public/svgs/arrow.svg";
+import { motion } from "framer-motion";
 
 const Button: React.FC<ButtonProps> = ({
   appearance,
@@ -11,7 +12,8 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }): JSX.Element => {
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.09 }}
       onClick={props.onClick}
       className={cn(className, {
         [styles.button]: true,
@@ -29,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
           <ArrowIcon />
         </span>
       )}
-    </button>
+    </motion.button>
   );
 };
 

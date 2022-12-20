@@ -1,4 +1,4 @@
-import React, {
+import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   HTMLAttributes,
@@ -7,6 +7,26 @@ import React, {
   TextareaHTMLAttributes,
 } from "react";
 import { FieldError } from "react-hook-form";
+import up from "../public/svgs/up.svg";
+import menu from "../public/svgs/lines.svg";
+import close from "../public/svgs/cross.svg";
+
+export const icons = {
+  up,
+  menu,
+  close,
+};
+
+export type IconName = keyof typeof icons;
+
+export interface ButtonIconProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  icon: IconName;
+  appearance: "primary" | "white";
+}
 
 export interface HTagProps {
   tag: "h1" | "h2" | "h3";
@@ -14,9 +34,12 @@ export interface HTagProps {
 }
 
 export interface ButtonProps
-  extends DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
+  extends Omit<
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    "onAnimationStart" | "onDragStart" | "onDragEnd" | "onDrag" | "ref"
   > {
   children: ReactNode;
   appearance: string;

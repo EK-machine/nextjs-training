@@ -49,7 +49,9 @@ const TopicPageComponent: React.FC<TopicPageComponentProps> = ({
 
       <div>
         {sortedProducts &&
-          sortedProducts.map((p) => <Product product={p} key={p.title} />)}
+          sortedProducts.map((p) => (
+            <Product layout product={p} key={p.title} />
+          ))}
       </div>
 
       <div className={styles.hhTitle}>
