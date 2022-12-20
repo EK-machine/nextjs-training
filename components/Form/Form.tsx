@@ -10,6 +10,7 @@ import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { API } from "../../helpers/api";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Form: React.FC<FormProps> = ({
   productId,

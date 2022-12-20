@@ -193,19 +193,9 @@
 
 .reviews {
   margin-bottom: 30px;
-}
-
-.closed {
   overflow: hidden;
-  max-height: 0;
-  padding: 0;
-}
-
-.opened {
-  border-radius: 0 0 5px 5px;
-  overflow: hidden;
-  max-height: auto;
   padding: 30px;
+  border-radius: 0 0 5px 5px;
 }
 
 @media screen and (min-width: 480px) {

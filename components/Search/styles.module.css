@@ -4,7 +4,7 @@
   display: inline-block;
 }
 
-.searchInput {
+.searchInput div input {
   width: 100%;
 }
 
