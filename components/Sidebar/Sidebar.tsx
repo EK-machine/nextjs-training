@@ -3,6 +3,7 @@ import Menu from "../Menu/Menu";
 import LogoIcon from "../../public/svgs/logo.svg";
 import styles from "./styles.module.css";
 import cn from "classnames";
+import Search from "../Search/Search";
 
 const Sidebar: React.FC<SidebarProps> = ({
   className,
@@ -20,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           [styles.logo]: true,
         })}
       />
-      <div>search here</div>
+      <Search />
       <Menu />
     </div>
   );

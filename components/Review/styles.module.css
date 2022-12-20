@@ -1,0 +1,73 @@
+.review {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 24px;
+  grid-template-columns: 30px 10px calc(50% - 40px) auto;
+  gap: 12px 0;
+  grid-template-areas:
+    "user . top top"
+    "date date date rating"
+    "description description description description";
+}
+
+.review:last-child {
+  margin-bottom: 0px;
+}
+
+.user {
+  grid-area: user;
+}
+
+.top {
+  grid-area: top;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.date {
+  grid-area: date;
+}
+
+.rating {
+  grid-area: rating;
+}
+
+.description {
+  grid-area: description;
+  text-align: justify;
+}
+
+@media screen and (min-width: 690px) {
+  .review {
+    grid-template-columns: 30px 10px auto 1fr auto 20px auto;
+    grid-template-areas:
+      "user . top . date . rating"
+      "description description description description description description description";
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .review {
+    grid-template-columns: 30px 10px auto 1fr auto 20px auto;
+    grid-template-columns: 30px 10px calc(50% - 40px) auto;
+
+    grid-template-areas:
+      "user . top top"
+      "date date date rating"
+      "description description description description";
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .review {
+    grid-template-columns: 30px 10px auto 1fr auto 20px auto;
+    grid-template-areas:
+      "user . top . date . rating"
+      "description description description description description description description";
+  }
+}

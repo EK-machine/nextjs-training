@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import styles from "./styles.module.css";
 import { FunctionComponent } from "react";
 import { AppContextProvider } from "../../context/app.context";
-import cn from "classnames";
 
 const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => {
   return (

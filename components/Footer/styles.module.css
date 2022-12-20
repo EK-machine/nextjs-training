@@ -10,7 +10,7 @@
 }
 
 .wrapper a:hover {
-  color: var(--grey-light);
+  color: var(--gray-light);
 }
 
 @media (min-width: 765px) {

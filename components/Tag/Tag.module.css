@@ -18,7 +18,7 @@
 }
 
 .ghost {
-  border: 1px solid var(--grey-light);
+  border: 1px solid var(--gray-light);
 }
 
 .red {
@@ -27,7 +27,7 @@
   background-color: #de0000;
 }
 
-.grey {
+.gray {
   font-weight: bold;
   color: var(--white);
   background-color: #b3c0d9;
@@ -36,7 +36,7 @@
 .green {
   font-weight: bold;
   color: var(--green);
-  background-color: var(--grey-light);
+  background-color: var(--green-light);
 }
 
 .primary {

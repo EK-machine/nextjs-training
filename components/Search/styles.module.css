@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.button {
+  background-color: var(--primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  outline-color: var(--gray-light);
+  border: none;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  padding: 7px;
+  cursor: pointer;
+}

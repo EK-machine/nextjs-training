@@ -30,3 +30,17 @@ export const FirstLevelMenu: FirstLevelMenuItem[] = [
     id: TopCategory.Propducts,
   },
 ];
+
+export const convertToRur = (s: number) =>
+  s
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+    .concat(" ₽");
+
+export const declOfNum = (n: number): string => {
+  const titles = [" отзыв", " отзыва", " отзывов"];
+  const cases = [2, 0, 1, 1, 1, 2];
+  return titles[
+    n % 100 > 4 && n % 100 < 20 ? 2 : cases[n % 10 < 5 ? n % 10 : 5]
+  ];
+};

@@ -1,0 +1,304 @@
+.product {
+  margin-top: 10px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 70px 20px auto;
+  grid-template-areas:
+    "logo . title"
+    "logo . title"
+    "tags tags tags"
+    "priceTitle price price"
+    "creditTitle credit credit"
+    "rateTitle rating rating"
+    "hr hr hr"
+    "description description description"
+    "feature feature feature"
+    "advBlock advBlock advBlock"
+    "hr2 hr2 hr2"
+    "actions actions actions";
+}
+
+.productOpened {
+  border-radius: 5px 5px 0 0;
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.title {
+  grid-area: title;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-start;
+}
+
+.tags {
+  grid-area: tags;
+  margin-bottom: 10px;
+}
+
+.price {
+  grid-area: price;
+  margin-bottom: 10px;
+}
+
+.credit {
+  grid-area: credit;
+  margin-bottom: 10px;
+}
+
+.rating {
+  grid-area: rating;
+}
+
+.priceTitle {
+  grid-area: priceTitle;
+}
+
+.creditTitle {
+  grid-area: creditTitle;
+}
+
+.rateTitle {
+  grid-area: rateTitle;
+}
+
+.hr {
+  grid-area: hr;
+}
+
+.description {
+  grid-area: description;
+  text-align: justify;
+}
+
+.feature {
+  grid-area: feature;
+}
+
+.advBlock {
+  grid-area: advBlock;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: justify;
+}
+
+.hr2 {
+  grid-area: hr2;
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: space-between;
+}
+
+.advTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 5px;
+}
+
+.advantages {
+  padding-left: 15px;
+  border-left: 2px solid var(--green);
+  margin-bottom: 20px;
+}
+
+.disadvantages {
+  padding-left: 15px;
+  border-left: 2px solid var(--red);
+}
+
+.logo img {
+  border-radius: 5px;
+}
+
+.category {
+  margin-top: 7px;
+}
+
+.price,
+.credit {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-end;
+}
+
+.rating {
+  align-self: flex-end;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 14px;
+}
+
+.c {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  padding-right: 0px;
+  align-items: baseline;
+}
+
+.c:last-child {
+  margin-bottom: 10px;
+}
+
+.cName {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  margin-right: 5px;
+}
+
+.cDots {
+  border-bottom: 1px dotted var(--gray-light);
+  margin-bottom: 5px;
+}
+
+.cValue {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  margin-left: 10px;
+}
+
+.priceTitle,
+.creditTitle,
+.rateTitle,
+.month {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.rateTitle a {
+  color: var(--primary);
+}
+
+.gTag {
+  margin-left: 5px;
+}
+
+.secBtn {
+  margin-left: 20px;
+}
+
+.reviews {
+  margin-bottom: 30px;
+}
+
+.closed {
+  overflow: hidden;
+  max-height: 0;
+  padding: 0;
+}
+
+.opened {
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+  max-height: auto;
+  padding: 30px;
+}
+
+@media screen and (min-width: 480px) {
+  .product {
+    grid-template-columns: 70px 20px 90px auto 50%;
+    grid-template-areas:
+      "logo . title title title"
+      "logo . . . ."
+      "tags tags tags tags tags"
+      "price price price . credit"
+      "priceTitle priceTitle priceTitle . creditTitle"
+      "rating rating rating rating rating"
+      "rateTitle rateTitle rateTitle rateTitle rateTitle"
+      "hr hr hr hr hr"
+      "description description description description description"
+      "feature feature feature feature feature"
+      "advBlock advBlock advBlock advBlock advBlock"
+      "hr2 hr2 hr2 hr2 hr2"
+      "actions actions actions actions actions";
+  }
+}
+
+@media screen and (min-width: 590px) {
+  .product {
+    grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+    grid-template-areas:
+      "logo . title title title title title"
+      "logo . tags tags tags tags tags"
+      "price price price . credit . rating"
+      "priceTitle priceTitle priceTitle . creditTitle . rateTitle"
+      "hr hr hr hr hr hr hr"
+      "description description description description description description description"
+      "feature feature feature feature feature feature feature"
+      "advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
+      "hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+      "actions actions actions actions actions actions actions";
+  }
+}
+
+@media screen and (min-width: 765px) {
+  .product {
+    grid-template-columns: 70px 20px 90px auto 50%;
+    grid-template-areas:
+      "logo . title title title"
+      "logo . . . ."
+      "tags tags tags tags tags"
+      "price price price . credit"
+      "priceTitle priceTitle priceTitle . creditTitle"
+      "rating rating rating rating rating"
+      "rateTitle rateTitle rateTitle rateTitle rateTitle"
+      "hr hr hr hr hr"
+      "description description description description description"
+      "feature feature feature feature feature"
+      "advBlock advBlock advBlock advBlock advBlock"
+      "hr2 hr2 hr2 hr2 hr2"
+      "actions actions actions actions actions";
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .product {
+    grid-template-columns: 70px 30px calc(50% - 100px) 1fr auto 40px auto 40px auto;
+    grid-template-areas:
+      "logo . title . price . credit . rating"
+      "logo . tags . priceTitle . creditTitle . rateTitle"
+      "hr hr hr hr hr hr hr hr hr"
+      "description description description description description description description description description"
+      "feature feature feature . advBlock advBlock advBlock advBlock advBlock"
+      "hr2 hr2 hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+      "actions actions actions actions actions actions actions actions actions";
+  }
+
+  .price,
+  .credit,
+  .rating {
+    align-self: flex-start;
+  }
+
+  .tags,
+  .price,
+  .credit {
+    margin-bottom: 0px;
+  }
+
+  .c {
+    padding-right: 60px;
+  }
+
+  .c:last-child {
+    margin-bottom: 0px;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
