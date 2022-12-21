@@ -56,44 +56,47 @@ const Form: React.FC<FormProps> = ({
   return (
     <form {...props} onSubmit={handleSubmit(onSubmit)}>
       <div className={cn(styles.form, className)}>
-        <Controller
-          control={control}
-          name="name"
-          rules={{
-            required: "Name is required",
-          }}
-          render={({ field }) => (
-            <Input
-              ref={field.ref}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Имя"
-              error={errors.name}
-              tabIndex={isOpened ? 0 : -1}
-              aria-invalid={errors.name ? true : false}
-            />
-          )}
-        />
+        <div className={styles.name}>
+          <Controller
+            control={control}
+            name="name"
+            rules={{
+              required: "Name is required",
+            }}
+            render={({ field }) => (
+              <Input
+                ref={field.ref}
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="Имя"
+                error={errors.name}
+                tabIndex={isOpened ? 0 : -1}
+                aria-invalid={errors.name ? true : false}
+              />
+            )}
+          />
+        </div>
 
-        <Controller
-          control={control}
-          name="title"
-          rules={{
-            required: "Title is required",
-          }}
-          render={({ field }) => (
-            <Input
-              ref={field.ref}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Заголовок"
-              className={styles.title}
-              error={errors.title}
-              tabIndex={isOpened ? 0 : -1}
-              aria-invalid={errors.title ? true : false}
-            />
-          )}
-        />
+        <div className={styles.title}>
+          <Controller
+            control={control}
+            name="title"
+            rules={{
+              required: "Title is required",
+            }}
+            render={({ field }) => (
+              <Input
+                ref={field.ref}
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="Заголовок"
+                error={errors.title}
+                tabIndex={isOpened ? 0 : -1}
+                aria-invalid={errors.title ? true : false}
+              />
+            )}
+          />
+        </div>
 
         <div className={styles.rating}>
           <span>Оценка: </span>
@@ -116,26 +119,27 @@ const Form: React.FC<FormProps> = ({
           />
         </div>
 
-        <Controller
-          control={control}
-          name="description"
-          rules={{
-            required: "Description is required",
-          }}
-          render={({ field }) => (
-            <TextArea
-              ref={field.ref}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder="Текст отзыва"
-              className={styles.description}
-              error={errors.description}
-              tabIndex={isOpened ? 0 : -1}
-              aria-label="Текст отзыва"
-              aria-invalid={errors.description ? true : false}
-            />
-          )}
-        />
+        <div className={styles.description}>
+          <Controller
+            control={control}
+            name="description"
+            rules={{
+              required: "Description is required",
+            }}
+            render={({ field }) => (
+              <TextArea
+                ref={field.ref}
+                value={field.value}
+                onChange={field.onChange}
+                placeholder="Текст отзыва"
+                error={errors.description}
+                tabIndex={isOpened ? 0 : -1}
+                aria-label="Текст отзыва"
+                aria-invalid={errors.description ? true : false}
+              />
+            )}
+          />
+        </div>
 
         <div className={styles.submit}>
           <Button

@@ -2,21 +2,44 @@
   font-size: 14px;
   line-height: 24px;
   display: grid;
-  grid-template-columns: [start] 1fr [end];
+  grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "name"
+    "title"
+    "rating"
+    "description"
+    "submit";
   align-items: center;
   gap: 20px 30px;
 }
 
-.description {
-  grid-column: start / end;
-}
-
-.submit {
-  grid-column: start / end;
+.name {
+  grid-area: name;
 }
 
 .title {
+  grid-area: title;
   justify-self: normal;
+}
+
+.description {
+  grid-area: description;
+}
+
+.name div,
+.name div input,
+.title div,
+.title div input {
+  width: 100%;
+}
+
+.description div textarea {
+  width: 100%;
+}
+
+.submit {
+  grid-area: submit;
 }
 
 .info {
@@ -24,6 +47,8 @@
 }
 
 .rating {
+  justify-self: left;
+  grid-area: rating;
   display: grid;
   grid-template-columns: auto auto;
   gap: 20px;
@@ -68,7 +93,13 @@
 
 @media screen and (min-width: 640px) {
   .form {
-    grid-template-columns: [start] 1fr 1fr [end];
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name title"
+      "rating . "
+      "description description"
+      "submit submit";
+    gap: 20px;
   }
 
   .title {
@@ -76,29 +107,50 @@
   }
 
   .rating {
-    grid-column: start / end;
     grid-template-columns: auto 1fr;
   }
 }
 
 @media screen and (min-width: 765px) {
   .form {
-    grid-template-columns: [start] 1fr [end];
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "name"
+      "title"
+      "rating"
+      "description"
+      "submit";
   }
 }
 
 @media screen and (min-width: 1000px) {
   .form {
-    grid-template-columns: [start] 1fr 1fr [end];
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name title"
+      "rating ."
+      "description description"
+      "submit submit";
+    gap: 20px;
   }
 }
 
 @media screen and (min-width: 1240px) {
   .form {
-    grid-template-columns: [start] auto 1fr auto [end];
+    grid-template-columns: [start] auto auto auto [end];
+    grid-template-areas:
+      "name title rating"
+      "description description description"
+      "submit submit submit";
+    gap: 20px;
   }
 
-  .title {
+  .description {
+    grid-column: start / end;
+  }
+
+  .title,
+  .name {
     justify-self: left;
   }
 

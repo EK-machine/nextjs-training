@@ -44,9 +44,9 @@ const Rating = forwardRef<HTMLDivElement, RatingProps>(
             tabIndex={computeFocus(rating as number, i)}
             ref={(e) => ratingArrayRef.current?.push(e as HTMLSpanElement)}
             role={isEditable ? "slider" : ""}
-            aria-valuenow={rating}
             aria-valuemax={5}
             aria-valuemin={1}
+            aria-valuenow={rating as number}
             aria-label={isEditable ? "Укажите рейтинг" : `рейтинг ${rating}`}
             aria-invalid={error ? true : false}
           >
