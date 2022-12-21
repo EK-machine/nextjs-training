@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 20px;
+  text-align: center;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--primary);
+}
+
+.link:hover {
+  background-color: var(--primary-hover);
+}
