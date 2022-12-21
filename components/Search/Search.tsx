@@ -1,12 +1,11 @@
 import { SearchProps } from "../../types/types";
 import styles from "./styles.module.css";
-import SearchIcon from "../../public/svgs/search.svg";
 import Input from "../Input/Input";
 import cn from "classnames";
 import { useState } from "react";
-import Button from "../Button/Button";
 import { useRouter } from "next/router";
 import { KeyboardEvent } from "react";
+import ButtonIcon from "../ButtonIcon/ButtonIcon";
 
 const Search: React.FC<SearchProps> = ({
   className,
@@ -32,7 +31,7 @@ const Search: React.FC<SearchProps> = ({
   };
 
   return (
-    <div {...props} className={cn(className, styles.wrapper)}>
+    <form {...props} className={cn(className, styles.wrapper)} role="search">
       <Input
         placeholder="Поиск..."
         value={search}
@@ -40,15 +39,14 @@ const Search: React.FC<SearchProps> = ({
         className={styles.searchInput}
         onKeyDown={handleKeyDown}
       />
-      <Button
-        appearance="primary"
-        type="button"
-        className={styles.button}
+      <ButtonIcon
         onClick={startSearch}
-      >
-        <SearchIcon />
-      </Button>
-    </div>
+        className={styles.button}
+        appearance="primary"
+        aria-label="Искать по сайту"
+        icon="search"
+      />
+    </form>
   );
 };
 

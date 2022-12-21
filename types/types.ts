@@ -10,11 +10,13 @@ import { FieldError } from "react-hook-form";
 import up from "../public/svgs/up.svg";
 import menu from "../public/svgs/lines.svg";
 import close from "../public/svgs/cross.svg";
+import search from "../public/svgs/search.svg";
 
 export const icons = {
   up,
   menu,
   close,
+  search,
 };
 
 export type IconName = keyof typeof icons;
@@ -265,7 +267,7 @@ export interface TextAreaProps
 }
 
 export interface SearchProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+  extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {}
 
 export interface ProductProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -283,6 +285,7 @@ export interface ReviewProps
 export interface FormProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   productId: string;
+  isOpened: boolean;
 }
 
 export interface FormInterface {

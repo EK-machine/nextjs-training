@@ -39,6 +39,7 @@ const Product = motion(
           behavior: "smooth",
           block: "start",
         });
+        reviwRef.current?.focus();
       };
 
       return (
@@ -59,18 +60,30 @@ const Product = motion(
             </div>
             <div className={styles.title}>{product.title}</div>
             <div className={styles.price}>
-              {convertToRur(product.price)}
+              <span>
+                <span className="visuallyHidden">цена</span>
+                {convertToRur(product.price)}
+              </span>
               {product.oldPrice && (
-                <Tag className={styles.gTag} size="s" color="green">
-                  {convertToRur(product.price - product.oldPrice)}
-                </Tag>
+                <span>
+                  <span className="visuallyHidden">скидка</span>
+                  <Tag className={styles.gTag} size="s" color="green">
+                    {convertToRur(product.price - product.oldPrice)}
+                  </Tag>
+                </span>
               )}
             </div>
             <div className={styles.credit}>
-              {convertToRur(product.credit)}/
+              <span>
+                <span className="visuallyHidden">цена в кредит</span>
+                {convertToRur(product.credit)}/
+              </span>
               <span className={styles.month}>мес</span>
             </div>
             <div className={styles.rating}>
+              <span className="visuallyHidden">{`рейтинг ${
+                product.reviewAvg ?? product.initialRating
+              }`}</span>
               <Rating rating={product.reviewAvg ?? product.initialRating} />
             </div>
             <div className={styles.tags}>
@@ -80,8 +93,12 @@ const Product = motion(
                 </Tag>
               ))}
             </div>
-            <div className={styles.priceTitle}>цена</div>
-            <div className={styles.creditTitle}>в кредит</div>
+            <div className={styles.priceTitle} aria-hidden={true}>
+              цена
+            </div>
+            <div className={styles.creditTitle} aria-hidden={true}>
+              в кредит
+            </div>
             <div className={styles.rateTitle}>
               <a href="#ref" onClick={scrollToReview}>
                 {product.reviewCount}
@@ -121,6 +138,7 @@ const Product = motion(
                 className={styles.secBtn}
                 appearance="ghost"
                 arrow={isOpened ? "down" : "right"}
+                aria-expanded={isOpened}
               >
                 Читать отзывы
               </Button>
@@ -131,12 +149,17 @@ const Product = motion(
             variants={variants}
             initial="hidden"
           >
-            <Card className={styles.reviews} color="blue" ref={reviwRef}>
+            <Card
+              className={styles.reviews}
+              color="blue"
+              ref={reviwRef}
+              tabIndex={isOpened ? 0 : -1}
+            >
               {product.reviews.map((r) => (
                 <Review key={r._id} review={r} />
               ))}
               <Divider />
-              <Form productId={product._id} />
+              <Form productId={product._id} isOpened={isOpened} />
             </Card>
           </motion.div>
         </div>

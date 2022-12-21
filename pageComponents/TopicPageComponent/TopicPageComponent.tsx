@@ -40,17 +40,17 @@ const TopicPageComponent: React.FC<TopicPageComponentProps> = ({
       <div className={styles.title}>
         <HTag tag="h1">{page.title}</HTag>
         {products && (
-          <Tag color="gray" size="m">
+          <Tag color="gray" size="m" aria-label={`${products.length} курсов`}>
             {products.length}
           </Tag>
         )}
         <Sort setSort={setSort} sort={sort} />
       </div>
 
-      <div>
+      <div role="list">
         {sortedProducts &&
           sortedProducts.map((p) => (
-            <Product layout product={p} key={p.title} />
+            <Product role="listitem" layout product={p} key={p.title} />
           ))}
       </div>
 
