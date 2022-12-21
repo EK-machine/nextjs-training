@@ -23,6 +23,7 @@ const Up: React.FC = (): JSX.Element => {
       animate={controls}
       className={styles.up}
       initial={{ opacity: 0 }}
+      aria-label="Наверх"
     >
       <ButtonIcon onClick={scrollToTop} appearance="primary" icon="up" />
     </motion.div>

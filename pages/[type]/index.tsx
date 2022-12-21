@@ -5,7 +5,7 @@ import {
 } from "next/types";
 import axios from "axios";
 import { withLayout } from "../../components/Layout/Layout";
-import { HomeProps, MenuItem, TypeProps } from "../../types/types";
+import { MenuItem, TypeProps } from "../../types/types";
 import { FirstLevelMenu } from "../../helpers/helpers";
 import { ParsedUrlQuery } from "querystring";
 import { API } from "../../helpers/api";
