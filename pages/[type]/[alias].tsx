@@ -15,19 +15,29 @@ import { ParsedUrlQuery } from "querystring";
 import { FirstLevelMenu } from "../../helpers/helpers";
 import TopicPageComponent from "../../pageComponents/TopicPageComponent/TopicPageComponent";
 import { API } from "../../helpers/api";
+import Head from "next/head";
 
 function TopicPage({
-  menu,
   page,
   products,
   firstCategory,
 }: TopicPageProps): JSX.Element {
   return (
-    <TopicPageComponent
-      page={page}
-      products={products}
-      firstCategory={firstCategory}
-    />
+    <>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name="description" content={page.metaDescription} />
+        <meta property="og:title" content={page.metaTitle} />
+        <meta property="og:description" content={page.metaDescription} />
+        <meta property="og:type" content="article" />
+      </Head>
+
+      <TopicPageComponent
+        page={page}
+        products={products}
+        firstCategory={firstCategory}
+      />
+    </>
   );
 }
 
