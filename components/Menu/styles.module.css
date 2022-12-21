@@ -1,6 +1,11 @@
 .menu {
 }
 
+.fLevelWrapper {
+  list-style: none;
+  padding: 0;
+}
+
 .fLevel {
   display: grid;
   grid-template-columns: 24px 1fr;
@@ -25,8 +30,9 @@
 .sLevelWrapper {
   margin-top: 15px;
   margin-left: 12px;
-  padding-left: 32px;
   border-left: 1px solid #dfdfdf;
+  list-style: none;
+  padding: 0 0 0 16px;
 }
 
 .secondLevel {
@@ -38,10 +44,14 @@
   font-weight: 300;
   font-size: 12px;
   line-height: 16px;
+  background: none;
+  border: none;
 }
 
 .sLevel {
   overflow: hidden;
+  list-style: none;
+  padding: 0 0 0 16px;
 }
 
 .tLevel {
@@ -52,6 +62,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
+  outline-offset: -1px;
 }
 
 .tLevelActive,

@@ -267,7 +267,7 @@ export interface TextAreaProps
 }
 
 export interface SearchProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+  extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {}
 
 export interface ProductProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -285,6 +285,7 @@ export interface ReviewProps
 export interface FormProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   productId: string;
+  isOpened: boolean;
 }
 
 export interface FormInterface {

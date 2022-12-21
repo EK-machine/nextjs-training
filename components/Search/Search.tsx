@@ -31,7 +31,7 @@ const Search: React.FC<SearchProps> = ({
   };
 
   return (
-    <div {...props} className={cn(className, styles.wrapper)}>
+    <form {...props} className={cn(className, styles.wrapper)} role="search">
       <Input
         placeholder="Поиск..."
         value={search}
@@ -43,9 +43,10 @@ const Search: React.FC<SearchProps> = ({
         onClick={startSearch}
         className={styles.button}
         appearance="primary"
+        aria-label="Искать по сайту"
         icon="search"
       />
-    </div>
+    </form>
   );
 };
 

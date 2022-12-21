@@ -8,7 +8,7 @@ import axios from "axios";
 import { GetStaticProps } from "next/types";
 import { HomeProps, MenuItem } from "../types/types";
 import Input from "../components/Input/Input";
-import TextArea from "../components/TextArea/Input";
+import TextArea from "../components/TextArea/TextArea";
 import { API } from "../helpers/api";
 
 function Home({ menu }: HomeProps): JSX.Element {

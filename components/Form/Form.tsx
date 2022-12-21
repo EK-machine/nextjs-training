@@ -3,17 +3,17 @@ import styles from "./styles.module.css";
 import cn from "classnames";
 import Input from "../Input/Input";
 import Rating from "../Rating/Rating";
-import TextArea from "../TextArea/Input";
+import TextArea from "../TextArea/TextArea";
 import Button from "../Button/Button";
 import CloseIcon from "../../public/svgs/close.svg";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { API } from "../../helpers/api";
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 const Form: React.FC<FormProps> = ({
   productId,
+  isOpened,
   className,
   ...props
 }): JSX.Element => {
@@ -22,6 +22,7 @@ const Form: React.FC<FormProps> = ({
     handleSubmit,
     formState: { errors },
     reset,
+    clearErrors,
   } = useForm<FormInterface>({
     defaultValues: {
       name: "",
@@ -68,6 +69,8 @@ const Form: React.FC<FormProps> = ({
               onChange={field.onChange}
               placeholder="Имя"
               error={errors.name}
+              tabIndex={isOpened ? 0 : -1}
+              aria-invalid={errors.name ? true : false}
             />
           )}
         />
@@ -86,6 +89,8 @@ const Form: React.FC<FormProps> = ({
               placeholder="Заголовок"
               className={styles.title}
               error={errors.title}
+              tabIndex={isOpened ? 0 : -1}
+              aria-invalid={errors.title ? true : false}
             />
           )}
         />
@@ -105,6 +110,7 @@ const Form: React.FC<FormProps> = ({
                 isEditable
                 rating={field.value}
                 error={errors.rating}
+                tabIndex={isOpened ? 0 : -1}
               />
             )}
           />
@@ -124,12 +130,21 @@ const Form: React.FC<FormProps> = ({
               placeholder="Текст отзыва"
               className={styles.description}
               error={errors.description}
+              tabIndex={isOpened ? 0 : -1}
+              aria-label="Текст отзыва"
+              aria-invalid={errors.description ? true : false}
             />
           )}
         />
 
         <div className={styles.submit}>
-          <Button appearance="primary">Отправить</Button>
+          <Button
+            onClick={() => clearErrors()}
+            tabIndex={isOpened ? 0 : -1}
+            appearance="primary"
+          >
+            Отправить
+          </Button>
           <span className={styles.info}>
             * Перед публикацией отзыв пройдет предварительную модерацию и
             проверку
@@ -137,18 +152,27 @@ const Form: React.FC<FormProps> = ({
         </div>
       </div>
       {isSuccess && (
-        <div className={styles.success}>
-          <CloseIcon
+        <div className={styles.success} role="alert">
+          <button
+            aria-label="Закрыть оповещение"
             className={styles.close}
             onClick={() => setIsSuccess(false)}
-          />
+          >
+            <CloseIcon />
+          </button>
           <div className={styles.successTitle}>Ваш отзыв отправлен</div>
           <div>Спасибо, Ваш отзыв будет опубликован после проверки</div>
         </div>
       )}
       {isError && (
-        <div className={styles.error}>
-          <CloseIcon className={styles.close} onClick={() => setIsError("")} />
+        <div className={styles.error} role="alert">
+          <button
+            aria-label="Закрыть оповещение"
+            className={styles.close}
+            onClick={() => setIsError("")}
+          >
+            <CloseIcon />
+          </button>
           <div className={styles.isError}>{isError}</div>
         </div>
       )}

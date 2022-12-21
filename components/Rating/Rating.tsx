@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useRef } from "react";
 import { useEffect, useState, KeyboardEvent } from "react";
 import styles from "./styles.module.css";
 import { RatingProps } from "../../types/types";
@@ -7,12 +7,26 @@ import cn from "classnames";
 
 const Rating = forwardRef<HTMLDivElement, RatingProps>(
   (
-    { error, isEditable = false, rating, setRating, ...props },
+    { error, isEditable = false, rating, tabIndex, setRating, ...props },
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
       new Array(5).fill(<></>)
     );
+    const ratingArrayRef = useRef<HTMLSpanElement[]>([]);
+
+    const computeFocus = (r: number, i: number): number => {
+      if (!isEditable) {
+        return -1;
+      }
+      if (!r && i === 0) {
+        return tabIndex ?? 0;
+      }
+      if (rating === i + 1) {
+        return tabIndex ?? 0;
+      }
+      return -1;
+    };
 
     const constructRating = (currentRating: number) => {
       const updatedArr = ratingArray.map((e: JSX.Element, i: number) => {
@@ -26,24 +40,39 @@ const Rating = forwardRef<HTMLDivElement, RatingProps>(
               [styles.filled]: i < currentRating,
               [styles.editable]: isEditable,
             })}
+            onKeyDown={handleKey}
+            tabIndex={computeFocus(rating as number, i)}
+            ref={(e) => ratingArrayRef.current?.push(e as HTMLSpanElement)}
+            role={isEditable ? "slider" : ""}
+            aria-valuenow={rating}
+            aria-valuemax={5}
+            aria-valuemin={1}
+            aria-label={isEditable ? "Укажите рейтинг" : `рейтинг ${rating}`}
+            aria-invalid={error ? true : false}
           >
-            <StarIcon
-              tabIndex={isEditable ? 0 : -1}
-              onKeyDown={(e: KeyboardEvent<SVGElement>) =>
-                isEditable && handleSpace(i + 1, e)
-              }
-            />
+            <StarIcon />
           </span>
         );
       });
       setRatingArray(updatedArr);
     };
 
-    const handleSpace = (i: number, e: KeyboardEvent<SVGElement>) => {
-      if (e.code !== "Space" || !setRating) {
+    const handleKey = (e: KeyboardEvent<HTMLSpanElement>) => {
+      if (!isEditable || !setRating) {
         return;
       }
-      setRating(i);
+      if (e.code === "ArrowRight" || e.code === "ArrowUp") {
+        if (!rating) {
+          setRating(1);
+        } else {
+          setRating(rating < 5 ? rating + 1 : 5);
+          e.preventDefault();
+        }
+      }
+      if (e.code === "ArrowLeft" || e.code === "ArrowDown") {
+        e.preventDefault();
+        setRating((rating as number) > 1 ? (rating as number) - 1 : 1);
+      }
     };
 
     const onclick = (i: number) => {
@@ -62,7 +91,7 @@ const Rating = forwardRef<HTMLDivElement, RatingProps>(
 
     useEffect(() => {
       constructRating(rating as number);
-    }, [rating]);
+    }, [rating, tabIndex]);
 
     return (
       <div
@@ -75,7 +104,11 @@ const Rating = forwardRef<HTMLDivElement, RatingProps>(
         {ratingArray.map((r, i) => (
           <span key={i}>{r}</span>
         ))}
-        {error && <span className={styles.errorMessage}>{error.message}</span>}
+        {error && (
+          <span role="alert" className={styles.errorMessage}>
+            {error.message}
+          </span>
+        )}
       </div>
     );
   }
